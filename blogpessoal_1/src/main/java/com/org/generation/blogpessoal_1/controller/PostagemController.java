@@ -47,7 +47,7 @@ public class PostagemController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Postagem> postPostagem(@RequestBody Postagem postagem) {
+	public ResponseEntity<Postagem> postPostagem(@Valid @RequestBody Postagem postagem) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(postagemRepository.save(postagem));
 
 	}
@@ -60,7 +60,7 @@ public class PostagemController {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> deletePostagem(@Valid @PathVariable long id) {
+	public ResponseEntity<?> deletePostagem(@PathVariable long id) {
 		return postagemRepository.findById(id).map(resp -> {
 			postagemRepository.deleteById(id);
 			return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
