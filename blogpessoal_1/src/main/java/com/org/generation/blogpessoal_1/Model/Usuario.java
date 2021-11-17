@@ -12,7 +12,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -32,7 +31,7 @@ public class Usuario {
 	private String usuario;
 
 	@NotBlank(message = "O atributo Senha é Obrigatória!")
-	@Size(min = 8, message = "A Senha deve ter no mínimo 8 caracteres")
+
 	private String senha;
 
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
@@ -46,6 +45,9 @@ public class Usuario {
 		this.usuario = usuario;
 		this.senha = senha;
 
+	}
+
+	public Usuario() {
 	}
 
 	public long getId() {
